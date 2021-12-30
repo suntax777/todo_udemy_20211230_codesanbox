@@ -17,10 +17,17 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
+    const addTarget = completeButton.parentNode;
+    const text = addTarget.firstElementChild.innerText;
+    console.log(text);
+    
+    deleteFromIncompleteList(completeButton.parentNode); 
+  /** 
     //押された完了ボアンの親タグ(div)を未完了リストから完了リストへ移動
     const addTarget = completeButton.parentNode;
     document.getElementById("complete-list").appendChild(addTarget);
   });
+  */
   //console.log(completeButton);
 
   //button(削除)タグ生成
@@ -28,8 +35,7 @@ const onClickAdd = () => {
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
     //押された駆除ボタンの親タグ(div)を未完了リストから削除
-    const deleteTarget = deleteButton.parentNode;
-    document.getElementById("incomplete-list").removeChild(deleteTarget);
+    deleteFromIncompleteList(deleteButton.parentNode);
   });
   //console.log(deleteButton);
 
@@ -40,6 +46,11 @@ const onClickAdd = () => {
 
   //未完了リストに追加
   document.getElementById("incomplete-list").appendChild(div);
+};
+
+// 未完了リストから指定の要素を削除
+const deleteFromIncompleteList = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
 };
 
 document
