@@ -25,9 +25,8 @@ const onClickAdd = () => {
     // div以下を初期化
     addTarget.textContent = null;
     console.log(addTarget);
+  });
 
-    
-     
   /** 
     //押された完了ボアンの親タグ(div)を未完了リストから完了リストへ移動
     const addTarget = completeButton.parentNode;
@@ -42,14 +41,13 @@ const onClickAdd = () => {
     //押された駆除ボタンの親タグ(div)を未完了リストから削除
     deleteFromIncompleteList(deleteButton.parentNode);
   });
- 
 
   //divタグの子要素に各要素を設定
   div.appendChild(li);
   div.appendChild(completeButton);
   div.appendChild(deleteButton);
 
-未完了リストに追加
+  //未完了リストに追加
   document.getElementById("incomplete-list").appendChild(div);
 };
 // 未完了リストから指定の要素を削除
@@ -58,5 +56,5 @@ const deleteFromIncompleteList = (target) => {
 };
 
 document
-   .getElementById("add-button")
-   .addEventListener("click", () => onClickAdd());
+  .getElementById("add-button")
+  .addEventListener("click", () => onClickAdd());
