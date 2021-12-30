@@ -5,13 +5,17 @@ const onClickAdd = () => {
   const inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
 
+  createincomleteList(inputText);
+};
+// 未完了リストに追加する関数
+const createincomleteList = (text) => {
   //div生成
   const div = document.createElement("div");
   div.className = "list-row";
 
   //liタグ生成
   const li = document.createElement("li");
-  li.innerText = inputText;
+  li.innerText = text;
 
   //button(完了)タグ生成
   const completeButton = document.createElement("button");
@@ -33,6 +37,14 @@ const onClickAdd = () => {
     //buttonタグ生成
     const backButton = document.createElement("button");
     backButton.innerText = "戻す";
+    backButton.addEventListener("click", () => {
+      //押された戻すボタンの親タグ(div)を完了
+      const deleteTarget = backButton.parentElement;
+      document.getElementById("complete-list").removeChild(deleteTarget);
+      //テキスト取得
+      const text = backButton.parentNode.firstElementChild.innerText;
+      createincomleteList(text);
+    });
 
     //divタグの子要素に各様を設定
     addTarget.appendChild(li);
